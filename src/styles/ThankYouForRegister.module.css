@@ -1,0 +1,50 @@
+.ThankYouContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ThankYouWrapper{
+    margin-top: 3rem;
+    max-width: 29.75rem;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.1); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.1);
+    display: flex;
+    padding: 2.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    align-self: stretch;
+    background-color: white;
+    border-radius: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+.ThankYouImage{
+    height: 2rem;
+    width: 400px;
+    position: relative;
+}
+
+.ThankYouH1{
+    color: var(--dark-grey, #333);
+    /* Heading M */
+    font-family: Instrument Sans;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    text-align: center;
+}
+
+.ThankYouP{
+    color: var(--dark-grey, #333);
+    /* Heading M */
+    font-family: Instrument Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    text-align: center;
+}

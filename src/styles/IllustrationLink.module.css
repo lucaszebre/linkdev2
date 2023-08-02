@@ -1,0 +1,32 @@
+.IllustrationLink{
+    display: flex;
+    justify-content: space-between;
+    height: 2.75rem;
+    padding:  1rem ;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: stretch;
+    border-radius: 0.5rem;
+    background: #1A1A1A;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.IllustrationLinkSpan{
+    color: var(--white, #FFF);
+
+/* Body S */
+font-family: Instrument Sans;
+font-size: 0.75rem;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 1.125rem */
+}
+
+.IllustrationLinkDiv1{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: .5rem;
+}

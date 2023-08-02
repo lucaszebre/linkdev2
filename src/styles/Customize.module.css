@@ -1,0 +1,160 @@
+.Wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.CustomizeWrapper{
+    width: 90%;
+    max-width: 1440px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+.illustration{
+    width: 40%;
+    background-color: white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.illustrationImage{
+    position: relative;
+    width: 20rem;
+    height: 40rem;
+}
+
+.CustomizeContainer{
+    background-color: white;
+    max-width: 48rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem;
+    align-items: start;
+    gap: 1em;
+}
+
+.CustomizeH1{
+    text-align: start;
+    width: 100%;
+    color: var(--dark-grey, #333);
+    /* Heading M */
+    font-family: Instrument Sans;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 3rem */
+}
+
+.CustomizePContainer{
+    text-align: start;
+    width: 100%;
+    color: var(--grey, #737373);
+    /* Body M */
+    font-family: Instrument Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 1.5rem */
+}
+
+.CustomizeButton{
+    display: flex;
+padding: 1rem;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 0.5rem;
+align-self: stretch;
+border-radius: 0.5rem;
+border: 1px solid var(--purple, #633CFF);
+background-color: transparent;
+}
+
+.CustomizeButton:active{
+    background: var(--light-purple, #EFEBFF);
+
+}
+
+.EmptyDiv{
+    display: flex;
+    padding: 0rem 1.25rem 1.25rem 0rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 0.75rem;
+    background: var(--light-grey, #FAFAFA);
+}
+
+.CustomizeH2{
+    max-width: 30.5rem;
+    color: var(--dark-grey, #333);
+text-align: center;
+/* Heading M */
+font-family: Instrument Sans;
+font-size: 2rem;
+font-style: normal;
+font-weight: 700;
+line-height: 150%; /* 3rem */
+}
+
+.CustomizeP{
+    color: var(--grey, #737373);
+text-align: center;
+max-width: 30.5rem;
+/* Body M */
+font-family: Instrument Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 1.5rem */
+}
+
+.CustomizeFooter{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+
+}
+
+.CustomizeSaveButton{
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--purple-hover-color, #BEADFF);
+    display: flex;
+    padding: 0.8rem 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.CustomizeSaveButton:active{
+    color: white;
+/* active-selection */
+box-shadow: 0px 0px 32px 0px rgba(99, 60, 255, 0.25);
+}
+
+
+@media (max-width:1024px){
+    .CustomizeContainer{
+        width: 100%;
+    }
+    .CustomizeSaveButton{
+        width: 100%;
+        align-items: center;
+    }
+    .illustration{
+        display: none;
+    }
+}

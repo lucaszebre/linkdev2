@@ -1,0 +1,89 @@
+.MobileContainer{
+    width: 19.1875rem;
+height: 39.4375rem;
+flex-shrink: 0;
+stroke-width: 1px;
+border: var(--grey, #737373) 1px solid;
+border-radius: 4rem;
+}
+
+.BorderDiv{
+    position: relative;
+}
+
+.Border{
+    width: 17.8125rem;
+height: 38.1875rem;
+flex-shrink: 0;
+position: absolute;
+}
+
+.MobileTop{
+    padding-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 2rem;
+}
+
+.MobileH1{
+    color: var(--dark-grey, #333);
+font-family: Instrument Sans;
+font-size: 1.125rem;
+font-style: normal;
+font-weight: 600;
+line-height: 150%; /* 1.6875rem */
+}
+
+.MobileP{
+    text-align: center;
+    color: var(--grey, #737373);
+font-family: Instrument Sans;
+font-size: 0.875rem;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 1.3125rem */
+}
+
+.MobileName{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.MobileCore{
+    max-height: 370px;
+    height: 100%;
+    width: 100%;
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    overflow: auto;
+    scrollbar-color: transparent;
+}
+
+/* For webkit-based browsers (Chrome, Safari, etc.) */
+.MobileCore::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+.MobileCore::-webkit-scrollbar-track {
+  background-color: white; /* Background color of the track */
+}
+
+.MobileCore::-webkit-scrollbar-thumb {
+  background-color: white; /* Color of the thumb (scrollbar handle) */
+  border-radius: 6px; /* Rounded corners of the thumb */
+}
+
+.MobileCore::-webkit-scrollbar-thumb:hover {
+  background-color: white; /* Color of the thumb when hovered */
+}
+
+.MobileCoreContainer{
+    max-width: 38rem;
+}

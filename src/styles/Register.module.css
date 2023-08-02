@@ -1,0 +1,218 @@
+.RegisterContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: transparent !important;
+  
+  }
+  
+  .RegisterError{
+    color: red;
+    font-size: .7rem;
+    position: absolute;
+    right: 10px;
+    top: 1rem;
+  }
+  .RegisterImage{
+    height: 40px;
+    width: 500px;
+    position: relative;
+  }
+  
+  .RegisterWrapper{
+      max-width: 29.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3.1875rem;
+      justify-content: center;
+      margin-top: 5rem;
+      margin-bottom: 5rem;}
+      
+  .RegisterForm{
+      -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.1); 
+      box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.1);
+      display: flex;
+      padding: 2.5rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      align-self: stretch;
+      background-color: white;
+      border-radius: 1rem;
+      width: 100%;
+  }
+  
+  .RegisterH1{
+      color: var(--dark-grey, #333);
+      /* Heading M */
+      font-family: Instrument Sans;
+      font-size: 2rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%;
+  }
+  
+  .RegisterDescription{
+      color: var(--grey, #737373);
+      /* Body M */
+      font-family: Instrument Sans;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%;
+  }
+  
+  .RegisterLabel{
+      color: var(--dark-grey, #333);
+      /* Body S */
+      font-family: Instrument Sans;
+      font-size: 0.75rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%;
+  }
+  
+  .RegisterInputWrapper{
+      position: relative;
+      height: 3rem;
+      width: 100%;
+  }
+  .RegisterInput{
+      padding-left: 2rem;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      gap: 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--borders, #D9D9D9);
+      background: var(--white, #FFF)
+  }
+  
+  .RegisterInput::placeholder {
+      color: var(--dark-grey, #333);
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 150%;
+      opacity: .5;
+    }
+    
+    /* For modern browsers */
+    .RegisterInput:-moz-placeholder {
+      position: relative;
+      left: 3rem;
+    }
+    
+    /* For Internet Explorer 10-11 */
+    .RegisterInput::-ms-input-placeholder {
+      position: relative;
+      left: 3rem;
+    }
+    
+    /* For Microsoft Edge */
+    .RegisterInput::-ms-input-placeholder {
+      position: relative;
+      left: 3rem;
+    }
+    
+    /* For WebKit-based browsers */
+    .RegisterInput::-webkit-input-placeholder {
+      position: relative;
+      left: 3rem;
+    }
+    
+    /* For Opera */
+    .RegisterInput::-o-input-placeholder {
+      position: relative;
+      left: 3rem;
+    }
+  
+    /* For Mozilla Firefox */
+  @-moz-document url-prefix() {
+      .RegisterInput::placeholder {
+        position: relative;
+        left: 3rem;
+      }
+    }
+  
+  .RegisterButton{
+      display: flex;
+      padding: 1.6rem;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      align-self: stretch;
+      border-radius: 0.5rem;
+      background: var(--purple, #633CFF);
+      height: 3rem;
+      width: 100%;
+      color: white;
+      border: none;
+      cursor: pointer;
+  }
+  
+  .RegisterButton:active{
+    background: var(--purple-hover-color, #BEADFF);
+  /* active-selection */
+  box-shadow: 0px 0px 32px 0px rgba(99, 60, 255, 0.25);
+  }
+  
+  .RegisterDiv{
+      display: flex;
+      align-self: center;
+      color: #737373;
+      text-align: center;
+      gap: .5rem;
+      /* Body M */
+      font-family: Instrument Sans;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%;
+  }
+  
+  .RegisterNoAccount{
+      color: #633CFF;
+  }
+  
+  .RegisterImageInput{
+      position: absolute;
+      left: 10px;
+      top: 1rem;
+  }
+  
+  @media (max-width:500px){
+  
+      .RegisterWrapper{
+          background-color: white;
+          margin: 0;
+          height: 100%;
+          width: 100%;
+      }
+      .RegisterImage{
+        height: 40px;
+        width: 200px;
+        position: relative;
+      }
+      .RegisterImageWrapper{
+        align-items: start;
+        padding: 2rem;
+        display: flex;
+        justify-content: start;
+        width: 100%;
+      }
+      .RegisterForm{
+          box-shadow: none;
+          gap: .5rem;
+      }
+      .RegisterDiv{
+        flex-direction: column;
+      }
+  
+  
+  }
