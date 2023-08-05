@@ -18,6 +18,8 @@
     background: var(--purple, #633CFF);
     z-index: 1;
     width: 100%;
+    
+    border: 1px solid #e5e7eb;
 }
 
 .PreviewTop{

@@ -16,6 +16,7 @@
     border-radius: .5rem;
     width: 90%;
     border: 1px solid #e5e7eb;
+    max-width: 1440px;
 }
 .LastDiv{
     display: flex;

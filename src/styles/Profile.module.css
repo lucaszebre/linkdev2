@@ -1,4 +1,5 @@
 .Profile{
+    width: 100%;
     background-color: white;
     max-width: 48rem;
     display: flex;
@@ -41,6 +42,7 @@
 }
 
 .ProfilePicture{
+    width: 100%;
     align-items: center;
     border-radius: 0.75rem;
     background: var(--light-grey, #FAFAFA);
@@ -190,4 +192,10 @@ line-height: 150%; /* 1.125rem */
     justify-content: center;
     border-radius: 0.5rem;
 background: var(--purple, #633CFF);
+}
+
+@media (max-width:1024px){
+    .Profile{
+        max-width: none;
+    }
 }
