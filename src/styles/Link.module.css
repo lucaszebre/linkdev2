@@ -3,6 +3,8 @@
     background: var(--light-grey, #FAFAFA);
     padding: 1.25rem;
     width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
 
 }
 

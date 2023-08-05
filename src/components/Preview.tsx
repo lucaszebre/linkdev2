@@ -16,7 +16,7 @@ const Preview = () => {
                 <button className={styles.ShareLink}>Share Link</button>
             </div>
             <div className={styles.PreviewCenter}>
-            <Avatar sx={{
+            <Avatar src={userData.avatar_url} sx={{
             width:96,
             height:96
         }} />
@@ -28,10 +28,10 @@ const Preview = () => {
                 </p>
                 <div className={styles.PreviewBody}>
                 {
-              LinkArray.map((linkItem,index) => (
-                  <IllustrationLink name={linkItem.platform} link={linkItem.link}  key={index} />
-                  ))
-          }
+                LinkArray.map((linkItem,index) => (
+                    <IllustrationLink name={linkItem.platform} link={linkItem.link?linkItem.link:''}  key={index} />
+                    ))
+            }
                 </div>
             </div>
         </div>

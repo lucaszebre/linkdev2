@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 
@@ -13,6 +14,8 @@
     justify-content: space-between;
     margin-top: 1rem;
     gap: 1rem;
+   
+
 }
 .illustration{
     width: 40%;
@@ -23,6 +26,7 @@
     align-items: center;
     border-radius: 0.75rem;
     padding: 1.5rem;
+    border: 1px solid #e5e7eb;
 }
 
 .illustrationImage{
@@ -39,6 +43,8 @@
     padding: 2.5rem;
     align-items: start;
     gap: 1em;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
 }
 
 .CustomizeH1{
@@ -94,6 +100,8 @@ background-color: transparent;
     align-self: stretch;
     border-radius: 0.75rem;
     background: var(--light-grey, #FAFAFA);
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
 }
 
 .CustomizeH2{

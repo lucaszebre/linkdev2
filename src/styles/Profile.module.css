@@ -6,6 +6,8 @@
     padding: 2.5rem;
     align-items: start;
     gap: 1em;
+    border-radius: 0.75rem;
+    border: 1px solid #e5e7eb;
 }
 
 
@@ -42,6 +44,8 @@
     align-items: center;
     border-radius: 0.75rem;
     background: var(--light-grey, #FAFAFA);
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
     height: 14.75rem;
     padding: 1.25rem;
     display: flex;
@@ -71,12 +75,14 @@
     max-width: 12rem;
     height: 100%;
     border-radius: 0.75rem;
-background: var(--light-purple, #EFEBFF);
-display: flex;
-padding: 3.8125rem 2.375rem 3.75rem 2.4375rem;
-justify-content: center;
-align-items: center;
-position: relative;
+    background: var(--light-purple, #EFEBFF);
+    border: 1px solid #e5e7eb;
+        border-radius: 0.75rem;
+    display: flex;
+    padding: 3.8125rem 2.375rem 3.75rem 2.4375rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .ProfileSpan{
@@ -127,6 +133,8 @@ line-height: 150%; /* 1.125rem */
     gap: .75rem;
     display: flex;
     flex-direction: column;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
 }
 
 .ProfileFormRow{
@@ -135,6 +143,7 @@ line-height: 150%; /* 1.125rem */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    
 }
 
 .ProfileLabel{

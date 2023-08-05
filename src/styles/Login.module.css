@@ -28,7 +28,9 @@
     gap: 3.1875rem;
     justify-content: center;
     margin-top: 5rem;
-    margin-bottom: 5rem;}
+    margin-bottom: 5rem;
+    
+  }
     
 .LoginForm{
     -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.1); 
@@ -42,6 +44,7 @@
     background-color: white;
     border-radius: 1rem;
     width: 100%;
+    border: 1px solid #e5e7eb;
 }
 
 .LoginH1{

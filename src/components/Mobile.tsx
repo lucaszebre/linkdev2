@@ -6,18 +6,22 @@ import { AuthContext } from '@/context';
 import IllustrationLink from './IllustrationLink';
 import Image from 'next/image';
 const Mobile = () => {
-    const { LinkArray,userData}  = useContext(AuthContext);
+    const { change,LinkArray,userData}  = useContext(AuthContext);
   return (
     <div className={styles.MobileContainer}>
         <div className={styles.BorderDiv}>
           <Image className={styles.Border} src={'/assets/images/mobile-border.svg'} alt='mobile-border' fill />
         </div>
       <div className={styles.MobileTop}>
-        <div><Avatar sx={{
+        <div>{change &&<Avatar key={1} sx={{
           width:96,
           height:96
           
-        }} src={userData.avatar_url} />
+        }} src={userData.avatar_url} /> || <Avatar key={2} sx={{
+          width:96,
+          height:96
+          
+        }} src={userData.avatar_url} /> }
         </div>
         <div className={styles.MobileName}>
             <h1 className={styles.MobileH1}>

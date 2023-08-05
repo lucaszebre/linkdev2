@@ -7,32 +7,27 @@ import LinkT from './Link'
 import { Link } from '@/types/ContextType';
 const LinkComponents = () => {
     const { LinkArray,setLinkArray,setUserData,setChange,userData,change } = useContext(AuthContext);
-    const [compteur,setCompteur]= useState(0)
     const addNewLink = () => {
         setLinkArray((prevLinkArray) => [...prevLinkArray, {link:'',platform:''}]);
         }
     
         function UpdateData() {
+            if(LinkArray.length==0){
+                setUserData((prevUserData) => {
+                    return { ...prevUserData, links:null };
+                    })
+            }
             LinkArray.forEach((linkItem) => {
                 setUserData((prevUserData) => {
-                return { ...prevUserData, [linkItem.platform]: linkItem.link };
+                return { ...prevUserData, links:LinkArray };
                 });
             });
             setChange((prevChange) => !prevChange);
             console.log(userData);
             }
 
-            function filterLinksWithValue(LinkArray:Link[]) {
-                // Use the filter method to create a new array with links that have a value for the 'link' property
-                const filteredLinks = LinkArray.filter((linkItem) => linkItem.link !== '');
-                return filteredLinks;
-            }
 
-            const [ArrayLinkLocal,setArrayLinkLocal] = useState(filterLinksWithValue(LinkArray))
 
-            useEffect(()=>{
-                setArrayLinkLocal(filterLinksWithValue(LinkArray))
-            },[change])
 
     
     
@@ -49,11 +44,11 @@ return (
                 }}variant='outlined' className={styles.CustomizeButton}>
                     + Add new link
                 </Button>
-                {ArrayLinkLocal.length == 0 ? (
+                {LinkArray.length == 0 ? (
             <Empty />
         ) : (
-            ArrayLinkLocal.map((linkItem,index) => (
-            <LinkT key={index} platform={linkItem.platform} link={linkItem.link} number={index} remove={setArrayLinkLocal} />
+            LinkArray.map((linkItem,index) => (
+            <LinkT key={index} platform={linkItem.platform} link={linkItem.link} number={index} remove={setLinkArray} />
             ))
         )}
                 

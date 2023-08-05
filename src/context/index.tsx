@@ -65,7 +65,11 @@ export const AuthContextProvider = (props: { children: React.ReactNode })=> {
             if (User) {
               // User already has a row in the "User" table, set the user data
                 setUserData(User);
-                setLinkArray(createLinkArray(User))
+                if(User.links==null){
+                    setLinkArray([])
+                }else{
+                    setLinkArray(User.links)
+                }
                 console.log(User)
             } else {
               // User doesn't have a row, create a new one with the GitHub URL
@@ -97,11 +101,7 @@ export const AuthContextProvider = (props: { children: React.ReactNode })=> {
             try{
                 const { data, error } = await supabase
                 .from('User')
-                .update({...userData,links:[
-                    {
-                      "platform": "github",
-                      "link": null
-    }]})
+                .update(userData)
                 .eq('user_id', user.id)
                 .select()
                     if(error){
