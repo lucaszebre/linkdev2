@@ -1,35 +1,29 @@
 import React, { createContext, useEffect, useState } from 'react';
 import  supabase  from '../../supabase'; // Import your Supabase client here
 import Router from 'next/router';
-import { User } from '@supabase/supabase-js';
+import { User,UserAppMetadata,UserMetadata} from '@supabase/supabase-js';
 import {Link,UserData} from '@/types/ContextType'
+import { createLinkArray } from '@/utils/CreateLinkArray';
 export type AuthContext = { // Type for context
-    userData:UserData
-    setUserData:React.Dispatch<React.SetStateAction<UserData>>
-    currentUser:User
+    userData:any
+    setUserData:React.Dispatch<React.SetStateAction<any[]>>
     Navbutton: string; // Delete block state
     setNavButton: React.Dispatch<React.SetStateAction<string>>;
     LinkArray:Link[],
-    setLinkArray:React.Dispatch<React.SetStateAction<Link[]>>
+    setLinkArray:React.Dispatch<React.SetStateAction<Link[]>>;
+    change:boolean,
+    setChange:React.Dispatch<React.SetStateAction<boolean>>
 }
 // Create the initial context
 export const AuthContext = createContext<AuthContext>({
     LinkArray:[],
     setLinkArray:() => {},
-    currentUser:{
-        id: '',
-        app_metadata: undefined,
-        user_metadata: undefined,
-        aud: '',
-        created_at: ''
-    },
     Navbutton: '',
     setNavButton: () => {},
-    userData:{
-        name: '',
-        email: '',
-    },
-    setUserData:()=>{}
+    userData:[],
+    setUserData:()=>{},
+    setChange:()=>{},
+    change:false
     
     
 });
@@ -37,9 +31,8 @@ export const AuthContext = createContext<AuthContext>({
 // Create the AuthContextProvider component
 export const AuthContextProvider = (props: { children: React.ReactNode })=> {
   // State to keep track of the current user
-  const [userData,setUserData] = useState<UserData>({name:'',
-email:''})
-    const [currentUser, setCurrentUser] = useState(null);
+    const [change,setChange] = useState(false)
+    const [userData,setUserData] = useState<any[]>([])
     const [Navbutton,setNavButton] = useState('Links')
     const [LinkArray,setLinkArray] = useState<Link[]>([])
     // Function to fetch the current user from Supabase
@@ -48,7 +41,6 @@ email:''})
         try{
             const { data:{user},}=await supabase.auth.getUser()
             if(user){
-                setCurrentUser(user)
                 Router.push('/customize')
             }
         }
@@ -58,15 +50,95 @@ email:''})
 
         }
     }
-    const addNewLink = (newLink: Link) => {
-        setLinkArray((prevLinkArray) => [...prevLinkArray, newLink]);
+    
+    const onMounted = async () => {
+        try {
+          // Check if the user is authenticated
+        const { data: { user } } = await supabase.auth.getUser()
+            if (user) {
+            // User is authenticated, check if a row exists in the "User" table
+            let { data: User, error } = await supabase
+                .from('User')
+                .select('*')
+                .eq('user_id', user.id)
+                .single();
+            if (User) {
+              // User already has a row in the "User" table, set the user data
+                setUserData(User);
+                setLinkArray(createLinkArray(User))
+                console.log(User)
+            } else {
+              // User doesn't have a row, create a new one with the GitHub URL
+            try {
+                const { data, error } = await supabase
+                    .from('User')
+                    .insert({ user_id: user.id,email:user.email })
+                    .select();
+                console.log(user.email)
+                
+                console.log(data);
+                console.error(error);
+                } catch (error) {
+                    console.error(error);
+                }
+                }
+            }
+            } catch (error) {
+            console.error(error);
+        }
         };
+
+        const onUpdate = async () => {
+        try {
+          // Check if the user is authenticated
+        const { data: { user } } = await supabase.auth.getUser()
+            if (user) {
+            // User is authenticated, update the data of the user 
+            try{
+                const { data, error } = await supabase
+                .from('User')
+                .update({...userData,links:[
+                    {
+                      "platform": "github",
+                      "link": null
+    }]})
+                .eq('user_id', user.id)
+                .select()
+                    if(error){
+                        console.error(error)
+                    }else{
+                       
+                    }
+            }catch(error){
+                console.error(error)
+            }
+        }
+    }catch{
+
+    }
+}
+
+const onDelete = async () => {
+
+}
+        
+        
+        
+
+
+
     
 
     // useEffect to fetch the current user on component mount
         useEffect(() => {
             onAuthStateChange();
+            onMounted();
+
         }, []);
+
+        useEffect(() => {
+            onUpdate();
+        }, [change]);
 
         // Function to check if the user is connected (authenticated)
         
@@ -74,13 +146,14 @@ email:''})
         return (
         <AuthContext.Provider
             value={{
-                currentUser,
                 LinkArray,
                 setLinkArray,
                 setNavButton,
                 Navbutton,
                 userData,
-                setUserData
+                setUserData,
+                setChange,
+                change,
             }}
         >
             {props.children}

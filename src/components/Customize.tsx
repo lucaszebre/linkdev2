@@ -19,7 +19,7 @@ const Customize = () => {
             <div className={styles.CustomizeWrapper}>
       
                 <div className={styles.illustration}>
-                    <Mobile name='lucaszebre' email='lucaszere@mail.fr' />
+                    <Mobile  />
                 </div>
                 {Navbutton=='Links' ? <LinkComponents /> : <Profile/>}
             </div>

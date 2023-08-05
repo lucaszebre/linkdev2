@@ -5,12 +5,8 @@ import styles from '@/styles/Mobile.module.css'
 import { AuthContext } from '@/context';
 import IllustrationLink from './IllustrationLink';
 import Image from 'next/image';
-const Mobile = (props:{
-    name:string,
-    email:string
-}) => {
+const Mobile = () => {
     const { LinkArray,userData}  = useContext(AuthContext);
-
   return (
     <div className={styles.MobileContainer}>
         <div className={styles.BorderDiv}>
@@ -20,7 +16,8 @@ const Mobile = (props:{
         <div><Avatar sx={{
           width:96,
           height:96
-        }} />
+          
+        }} src={userData.avatar_url} />
         </div>
         <div className={styles.MobileName}>
             <h1 className={styles.MobileH1}>
@@ -34,7 +31,7 @@ const Mobile = (props:{
         <div className={styles.MobileCore}>
           {
               LinkArray.map((linkItem,index) => (
-                  <IllustrationLink name={linkItem.platform} link={linkItem.link}  key={index} />
+                  <IllustrationLink name={linkItem.platform} link={linkItem.link?linkItem.link:''}  key={index} />
                   ))
           }
       </div>

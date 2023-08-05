@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import { AuthError, createClient } from "@supabase/supabase-js";
 /* eslint-disable react/no-unescaped-entities */
 import React,{useState,useEffect} from 'react'
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -10,6 +10,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import Link from 'next/link';
+import supabase from "../../supabase";
+import Router from "next/router";
 
 const Schema = z.object({
     email: z.string().email({ message: 'Invalid email format' }),
@@ -19,13 +21,12 @@ const Schema = z.object({
     .regex(/[!@#$%^&*(),.?":{}|<>]/, { message: '  at least one special character' }),
 });
 
-const supabase = createClient('https://rrqmpgpvlhaxsozwlntq.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJycW1wZ3B2bGhheHNvendsbnRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODk3MjU4NjIsImV4cCI6MjAwNTMwMTg2Mn0.OEAZdA5aUxMgV8xTuV8a8rFlzGpP_S2EcRAqp7Pa5_0');
 
 const Login =  () => {
     const {register,handleSubmit,watch,formState: { errors },} = useForm({resolver: zodResolver(Schema),});
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
+    const [error,setError]= useState<AuthError>()
 
     const handleLoginWithGoogle = async () => {
         try {
@@ -44,11 +45,11 @@ const Login =  () => {
             } else {
                 // Update state with the user data
                 console.log('Logged in user:', data);
+                Router.push('/customize');
             }
             } catch (err) {
             console.error('Error signing in with Google:');
-            }
-        };
+        };}
         const handleLoginWithGithub = async () => {
         try {
             const { data, error } = await supabase.auth.signInWithOAuth({
@@ -73,10 +74,23 @@ const Login =  () => {
         };
         
         async function signInWithEmail() {
-            const { data, error } = await supabase.auth.signInWithPassword({
-                email: email,
-                password: password,
-            })
+            try{
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email: email,
+                    password: password,
+                })
+                
+                if(error){
+                    setError(error)
+                    console.error('Error login ',error.message)
+                }else{
+                    console.log(data)
+                    Router.push('/customize')
+                }
+            }catch(err){
+                console.error("Error login")
+            }
+            
             
             }
             
@@ -137,8 +151,8 @@ const Login =  () => {
             
                     <div className={styles.LoginInputWrapper}>
                         <Image  className={styles.LoginImageInput} src='/assets/images/icon-password.svg' alt='icon-password' height={16} width={16} />
-                        <input  style={errors.password ? { border: '#EC5757 1px solid' } : {}}    {...register('password')} className={styles.LoginInput}  placeholder='Enter your password' type = "password" />
-                        {errors.password && <p className={styles.LoginError}>{errors.password?.message}</p>}
+                        <input   style={errors.password ? { border: '#EC5757 1px solid' } : {}}    {...register('password')} className={styles.LoginInput}  placeholder='Enter your password' type = "password" />
+                        {(errors.password && <p className={styles.LoginError}>{errors.password?.message}</p>) || (error && error.message && <p className={styles.LoginError}>Invalid password</p>) }
                     </div>
                     <button type='submit' className={styles.LoginButton}>Login</button>
                     <div className={styles.LoginDiv}>

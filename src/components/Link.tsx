@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react'
+import React,{useState,useContext, Dispatch, SetStateAction} from 'react'
 import styles from '@/styles/Link.module.css'
 import Image from 'next/image'
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -9,24 +9,32 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import CustomSVG from './CustomSvg';
 import { AuthContext } from '@/context';
 import { MenuItem, Select, SelectChangeEvent,Button } from '@mui/material'
+import { Link } from '@/types/ContextType';
+import { filterLinksWithValue } from '@/utils/FilterLink';
+
 const Link = (props:{
     number:number,
     platform:string,
-    link:string,
+    link:string|null,
+    remove:Dispatch<SetStateAction<Link[]>>
 }) => {
-    const [Platform, setPlatform] = React.useState('github');
+    const [Platform, setPlatform] = React.useState(props.platform);
+    const [Input,setInput] = useState(props.link)
     const { LinkArray, setLinkArray,setUserData,userData } = useContext(AuthContext);
 
-    function RemoveLinkArray(index: number) {
+  function RemoveLinkArray(index: number) {
       
-        // Make sure the index is within bounds
-        if (index >= 0 && index < LinkArray.length) {
-          // Create a new array by excluding the item at the specified index
-          const updatedLinkArray = LinkArray.filter((_, i) => i !== index);
-          // Update the state with the new array
-          setLinkArray(updatedLinkArray);
-        }
+      // Make sure the index is within bounds
+      if (index >= 0 && index < filterLinksWithValue(LinkArray).length) {
+        // Create a new array by excluding the item at the specified index
+        const updatedLinkArray = filterLinksWithValue(LinkArray).filter((_, i) => i !== index);
+        // Update the state with the new array
+        setLinkArray(updatedLinkArray);
+        
       }
+    }
+    
+
       function ChangePlatform(i: number, plat: string) {
         if (i >= 0 && i < LinkArray.length) {
           // Create a new array by updating the link property of the item at the specified index
@@ -52,11 +60,11 @@ const Link = (props:{
             const lienValue = event.target.value;
             ChangeLink(props.number, lienValue);
         };
-     
+        
     
   const handleChange = (event: SelectChangeEvent) => {
         setPlatform(event.target.value)
-       ChangePlatform(props.number, event.target.value);
+        ChangePlatform(props.number, event.target.value);
   };
     return (
         <div className={styles.Link}>
@@ -86,24 +94,24 @@ const Link = (props:{
                 fullWidth
             >
                 <MenuItem  value={'github'}><Button startIcon={<GitHubIcon/>}>Github</Button></MenuItem>
-                <MenuItem value={'frontend-mentor'}><Button startIcon={<CustomSVG choice='frontendmentor' color='#1976d2'/>}>Frontend Mentor</Button></MenuItem>
+                <MenuItem value={'frontendmentor'}><Button startIcon={<CustomSVG choice='frontendmentor' color='#1976d2'/>}>Frontend Mentor</Button></MenuItem>
                 <MenuItem value={'twitter'}><Button startIcon={<TwitterIcon/>}>Twitter</Button></MenuItem>
                 <MenuItem value={'linkedin'}><Button startIcon={<LinkedInIcon/>}>Linkedin</Button></MenuItem>
                 <MenuItem value={'youtube'}><Button startIcon={<YouTubeIcon/>}>Youtube</Button></MenuItem>
                 <MenuItem value={'facebook'}><Button startIcon={<FacebookIcon/>}>Facebook</Button></MenuItem>
-                <MenuItem value={'twitch'}><Button startIcon={<CustomSVG choice='twicht' color='#1976d2' />}>Twicht</Button></MenuItem>
+                <MenuItem value={'twicht'}><Button startIcon={<CustomSVG choice='twicht' color='#1976d2' />}>Twicht</Button></MenuItem>
                 <MenuItem value={'devto'}><Button startIcon={<CustomSVG choice='devto' color='#1976d2'/>}>Dev.to</Button></MenuItem>
                 <MenuItem value={'codewars'}><Button startIcon={<CustomSVG choice='codewars' color='#1976d2'/>}>Codewars</Button></MenuItem>
                 <MenuItem value={'codepen'}><Button startIcon={<CustomSVG choice='codepen' color='#1976d2'/>}>Codepen</Button></MenuItem>
                 <MenuItem value={'freecodecamp'}><Button startIcon={<CustomSVG choice='freecodecamp' color='#1976d2'/>}>freeCodeCamp</Button></MenuItem>
                 <MenuItem value={'gitlab'}><Button startIcon={<CustomSVG choice='gitlab' color='#1976d2'/>}>Gitlab</Button></MenuItem>
                 <MenuItem value={'hashnode'}><Button startIcon={<CustomSVG choice='hashnode' color='#1976d2'/>}>Hashnode</Button></MenuItem>
-                <MenuItem value={'stack-overflow'}><Button startIcon={<CustomSVG choice='stack-overflow' color='#1976d2' />}>Stack Overflow</Button></MenuItem>
+                <MenuItem value={'stack-verflow'}><Button startIcon={<CustomSVG choice='stack-overflow' color='#1976d2' />}>Stack Overflow</Button></MenuItem>
             </Select>
                 <label className={styles.LinkLabel} htmlFor="">Link</label>
                 <div className={styles.LinkWrapperInput}>
                     <Image className={styles.LinkIcon} src={'/assets/images/icon-link.svg'} alt='icon-link' width={16} height={16} />
-                    <input onChange={handleChangeLink} className={styles.LinkInput} type="text" />
+                    <input onChange={handleChangeLink} value={props.link ? props.link : ''} className={styles.LinkInput} type="text" />
                 </div>
             </div>
         </div>

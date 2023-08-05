@@ -1,6 +1,6 @@
 export interface Link {
     platform: string;
-    link: string;
+    link: string|null;
   }
   
 export interface UserData {
