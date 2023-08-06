@@ -199,3 +199,16 @@ background: var(--purple, #633CFF);
         max-width: none;
     }
 }
+
+
+@media (max-width:534px){
+    .ProfilePicture{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .UploadImage{
+        width: 100%;
+        max-width: none;
+    }
+}
