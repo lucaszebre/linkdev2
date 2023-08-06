@@ -119,5 +119,12 @@ a {
   }
 }
 
+@media (max-width:510px){
+ 
+  body,html{
+    background-color: white;
+  }
+}
+
 
 
