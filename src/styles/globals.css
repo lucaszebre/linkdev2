@@ -113,5 +113,11 @@ a {
   }
 }
 
+@media (max-width:375px){
+  body,html{
+    background-color: white;
+  }
+}
+
 
 

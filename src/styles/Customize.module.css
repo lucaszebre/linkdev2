@@ -92,7 +92,7 @@ background-color: transparent;
 
 .EmptyDiv{
     display: flex;
-    padding: 0rem 1.25rem 1.25rem 0rem;
+    padding: 1.25rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;

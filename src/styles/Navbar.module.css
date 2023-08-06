@@ -53,7 +53,12 @@
     border: none;
 
 }
-
+.Part1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+}
 .LinkButton{
     display: flex;
     justify-content: center;
@@ -129,3 +134,30 @@
         display: flex;
     }
 }
+
+@media (max-width:630px){
+    .NavbarImage{
+        display: none;
+    }
+    .Navbar{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        gap: 2rem;
+    }
+    .Part1{
+        width: 100%;
+    }
+    .NavbarDiv{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .LastDiv{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    }
