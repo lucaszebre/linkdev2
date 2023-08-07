@@ -97,8 +97,8 @@ const Profile = () => {
                 </div>
             </div>
 
-            <form className={styles.Form} onSubmit={handleSubmit(() =>{ setChange(prevChange=>!prevChange)
-            UploadUrl()})} action="">
+            <form className={styles.Form} onSubmit={handleSubmit(() =>{ 
+            UploadUrl(); setChange(prevChange=>!prevChange)})} action="">
                 <div className={styles.ProfileForm}>
                     <div className={styles.ProfileFormRow}>
                         <label className={styles.ProfileLabel} htmlFor="">
