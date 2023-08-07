@@ -20,6 +20,7 @@ const Profile = () => {
     const handleChangeName = (event: { target: { value: any; }; }) => {
         // Assuming you want to set the 'name' property of 'userData' based on the input value
         setUserData({ ...userData, name:event.target.value });
+        console.log(userData)
     };  
     const handleChangeMail = (event: { target: { value: any; }; }) => {
         // Assuming you want to set the 'name' property of 'userData' based on the input value
