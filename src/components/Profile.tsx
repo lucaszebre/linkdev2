@@ -16,7 +16,7 @@ const schema = z.object({
 const Profile = () => {
     const { setUserData,userData,setChange } = useContext(AuthContext);
     const [Url,setUrl] = useState('');
-    const {register,formState: { errors },} = useForm({resolver: zodResolver(schema),});
+    const {register,handleSubmit,formState: { errors },} = useForm({resolver: zodResolver(schema),});
     const handleChangeName = (event: { target: { value: any; }; }) => {
         // Assuming you want to set the 'name' property of 'userData' based on the input value
         setUserData({ ...userData, name:event.target.value });
@@ -97,7 +97,8 @@ const Profile = () => {
                 </div>
             </div>
 
-            <form className={styles.Form}  action="">
+            <form className={styles.Form} onSubmit={handleSubmit(() =>{ 
+            UploadUrl(); setChange(prevChange=>!prevChange)})} action="">
                 <div className={styles.ProfileForm}>
                     <div className={styles.ProfileFormRow}>
                         <label className={styles.ProfileLabel} htmlFor="">
@@ -119,8 +120,7 @@ const Profile = () => {
                     </div>
                 </div>
             <div className={styles.ProfileBottom}>
-                <Button type='submit'  variant='contained' onClick={() =>{ 
-            UploadUrl(); setChange(prevChange=>!prevChange)}} className={styles.ProfileButtonSave}>Save</Button>
+                <Button type='submit'  variant='contained' className={styles.ProfileButtonSave}>Save</Button>
             </div>
             </form>
         </div>
