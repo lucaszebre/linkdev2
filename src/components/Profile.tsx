@@ -104,7 +104,7 @@ const Profile = () => {
                     <input  className={styles.ProfileSpan} type="file" onChange={handleFileChange} />
                 </div>
                 <div className={styles.ProfileDiv}>
-                    <p className={styles.ProfileP}>Image must be below 1024x1024px.<br/>Use PNG or JPG format.</p>
+                    <p className={styles.ProfileP}>Image must be below 1024x1024px<br/>Use PNG or JPG format.</p>
                 </div>
             </div>
 
