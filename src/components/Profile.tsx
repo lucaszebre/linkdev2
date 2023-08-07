@@ -1,4 +1,4 @@
-import React,{ChangeEvent, useContext,useState} from 'react'
+import React,{ChangeEvent, useContext,useEffect,useState} from 'react'
 import Image from 'next/image'
 import styles from "@/styles/Profile.module.css"
 import { useForm } from 'react-hook-form';
@@ -82,7 +82,13 @@ const Profile = () => {
                 console.log(userData);
                 
                 
-              };
+                };
+
+                useEffect(() => {
+                    if (File) {
+                        setUrl(URL.createObjectURL(File));
+                    }
+                }, [File]);
 
     return (
         <div className={styles.Profile}>
@@ -138,3 +144,7 @@ const Profile = () => {
 }
 
 export default Profile
+function setImageUrl(arg0: string) {
+    throw new Error('Function not implemented.');
+}
+
