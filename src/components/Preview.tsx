@@ -37,7 +37,7 @@ const Preview = () => {
       };
 
       const copy = async () => {
-        await navigator.clipboard.writeText(`shareable-page/${userData.user_id}`);
+        await navigator.clipboard.writeText(`https://linkdev2.vercel.app/shareable-page/${userData.user_id}`);
       }
 
     return (
@@ -49,7 +49,7 @@ const Preview = () => {
         message="Link Copied to the clipboard"
       >
         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-      The link is copied!
+      The link is copied to the clipboard!
     </Alert> 
     </Snackbar>
         <div className={styles.Preview}>
