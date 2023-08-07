@@ -55,7 +55,7 @@ const Preview = () => {
         <div className={styles.Preview}>
             <div className={styles.PreviewBackground}></div>
             <div className={styles.PreviewTop}>
-                {user && <Link href={'/customize'}><Button variant='outlined' className={styles.BackEditor}>Back to Editor</Button></Link>}
+                {user && <Link href={'/'}><Button variant='outlined' className={styles.BackEditor}>Back to Editor</Button></Link>}
                 <Button onClick={handleClick} variant='contained' className={styles.ShareLink}>Share Link</Button>
             </div>
             <div className={styles.PreviewCenter}>
