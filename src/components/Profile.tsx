@@ -43,7 +43,6 @@ const Profile = () => {
             .storage
             .from('Avatar')
             .getPublicUrl(path)
-            console.log(data.publicUrl)
             return data.publicUrl
             }catch(error){
                 console.error('can not get the url ')
@@ -69,8 +68,6 @@ const Profile = () => {
                     .eq('user_id', userId);
                     if(updateError){
                         console.error(updateError.message)
-                    }else{
-                        console.log(updatedUserData)
                     }
                     }
                     
@@ -84,7 +81,6 @@ const Profile = () => {
                 // Call the UploadUrl function here
                 handleFileUpload();
                 setChange((prevChange) => !prevChange);
-                console.log(userData);
                 
                 
                 };
