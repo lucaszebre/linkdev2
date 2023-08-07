@@ -45,7 +45,7 @@ const Login =  () => {
             } else {
                 // Update state with the user data
                 console.log('Logged in user:', data);
-                Router.push('/customize');
+                Router.push('/');
             }
             } catch (err) {
             console.error('Error signing in with Google:');
@@ -85,7 +85,7 @@ const Login =  () => {
                     console.error('Error login ',error.message)
                 }else{
                     console.log(data)
-                    Router.push('/customize')
+                    Router.push('/')
                 }
             }catch(err){
                 console.error("Error login")

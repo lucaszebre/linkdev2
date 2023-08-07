@@ -40,8 +40,8 @@ export const AuthContextProvider = (props: { children: React.ReactNode })=> {
     const onAuthStateChange = async () =>{
         try{
             const { data:{user},}=await supabase.auth.getUser()
-            if(user){
-                Router.push('/customize')
+            if(user && window.location.hostname=='/login'){
+                Router.push('/')
             }
         }
         catch(error){
