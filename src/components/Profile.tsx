@@ -35,23 +35,7 @@ const Profile = () => {
             }
           };;
 
-    const UploadUrl = async () => {
-        const { data: { user } } = await supabase.auth.getUser()
-        const userId = user?.id
-        try{
-            const { data: updatedUserData, error: updateError } = await supabase
-                    .from('User')
-                    .update({ avatar_url: Url })
-                    .eq('user_id', userId);
-                    if (updateError) {
-                    console.error('Error updating avatar URL in Users table:', updateError.message);
-                    } else {
-                    console.log('Avatar uploaded successfully:', Url);
-                    }
-                
-        }catch(error){
-            console.error(error)
-        }}
+    
         
     
 
@@ -71,12 +55,20 @@ const Profile = () => {
                     .getPublicUrl(filePath)
                 const avatarUrl = data.publicUrl;
                 console.log(avatarUrl)
+                try{
+                    const { data: updatedUserData, error: updateError } = await supabase
+                    .from('User')
+                    .update({ avatar_url: avatarUrl })
+                    .eq('user_id', userId);
+                }catch(error){
+
+                }
                 
             };}}
 
             const UpdateData = () => {
                 // Call the UploadUrl function here
-                UploadUrl();
+                handleFileUpload();
                 setChange((prevChange) => !prevChange);
                 console.log(userData);
                 
