@@ -50,6 +50,7 @@ const Profile = () => {
                     console.error('Error uploading avatar:', error.message);
                 } else {
                 try{
+                    console.log(data.path.toString())
                     const { data: updatedUserData, error: updateError } = await supabase
                     .from('User')
                     .update({ avatar_url: data.path.toString() })
@@ -60,7 +61,7 @@ const Profile = () => {
                         console.log(updatedUserData)
                     }
                 }catch(error){
-                    console.error('Error updating the  Image url')
+                    console.error('Error updating the link')
                 }
                 
             };}}
