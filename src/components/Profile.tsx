@@ -1,7 +1,7 @@
 import React,{useContext,useState} from 'react'
 import Image from 'next/image'
 import styles from "@/styles/Profile.module.css"
-import { useForm } from 'react-hook-form';
+import { Form, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { AuthContext } from '@/context';
@@ -106,7 +106,7 @@ const Profile = () => {
                 </div>
             </div>
 
-            <form className={styles.Form} onSubmit={handleSubmit(onSubmit)} action="">
+            <Form className={styles.Form} onSubmit={onSubmit} action="">
                 <div className={styles.ProfileForm}>
                     <div className={styles.ProfileFormRow}>
                         <label className={styles.ProfileLabel} htmlFor="">
@@ -130,7 +130,7 @@ const Profile = () => {
             <div className={styles.ProfileBottom}>
                 <Button type='submit'  variant='contained' className={styles.ProfileButtonSave}>Save</Button>
             </div>
-            </form>
+            </Form>
         </div>
     )
 }
