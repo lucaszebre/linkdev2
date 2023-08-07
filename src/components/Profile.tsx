@@ -70,7 +70,6 @@ const Profile = () => {
                     .from('Avatar')
                     .getPublicUrl(filePath)
                 const avatarUrl = data.publicUrl;
-                setUrl(avatarUrl)
                 console.log(avatarUrl)
                 
             };}}
