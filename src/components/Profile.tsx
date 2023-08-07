@@ -19,11 +19,11 @@ const Profile = () => {
     const {register,handleSubmit,formState: { errors },} = useForm({resolver: zodResolver(schema),});
     const handleChangeName = (event: { target: { value: any; }; }) => {
         // Assuming you want to set the 'name' property of 'userData' based on the input value
-        setUserData({ ...userData, name: event.target.value });
+        setUserData({ ...userData, name:event.target.value });
     };  
     const handleChangeMail = (event: { target: { value: any; }; }) => {
         // Assuming you want to set the 'name' property of 'userData' based on the input value
-        setUserData({ ...userData, email: event.target.value });
+        setUserData({ ...userData, email:event.target.value });
     };
 
         const [selectedFile, setSelectedFile] = useState<File | null>(null);

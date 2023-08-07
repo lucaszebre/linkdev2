@@ -112,6 +112,8 @@ export const AuthContextProvider = (props: { children: React.ReactNode })=> {
             }catch(error){
                 console.error(error)
             }
+        }else{
+            console.error('user not log in')
         }
     }catch{
 
