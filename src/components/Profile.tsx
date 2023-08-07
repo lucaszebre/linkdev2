@@ -49,16 +49,10 @@ const Profile = () => {
                 if (error) {
                     console.error('Error uploading avatar:', error.message);
                 } else {
-                    const { data } = supabase
-                    .storage
-                    .from('Avatar')
-                    .getPublicUrl(filePath)
-                const avatarUrl = data.publicUrl;
-                console.log(avatarUrl)
                 try{
                     const { data: updatedUserData, error: updateError } = await supabase
                     .from('User')
-                    .update({ avatar_url: avatarUrl })
+                    .update({ avatar_url: data.path.toString() })
                     .eq('user_id', userId);
                 }catch(error){
 
