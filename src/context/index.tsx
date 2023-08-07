@@ -107,7 +107,7 @@ export const AuthContextProvider = (props: { children: React.ReactNode })=> {
                     if(error){
                         console.error(error)
                     }else{
-                       
+                       console.log(data)
                     }
             }catch(error){
                 console.error(error)
