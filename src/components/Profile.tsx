@@ -39,11 +39,10 @@ const Profile = () => {
         
         const getUrl = async (path:string) => {
             try{
-                
             const { data } = supabase
             .storage
             .from('Avatar')
-            .getPublicUrl('path')
+            .getPublicUrl(path)
             console.log(data.publicUrl)
             return data.publicUrl
             }catch(error){
