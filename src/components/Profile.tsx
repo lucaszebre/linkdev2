@@ -71,6 +71,7 @@ const Profile = () => {
                     .getPublicUrl(filePath)
                 const avatarUrl = data.publicUrl;
                 setUrl(avatarUrl)
+                console.log(avatarUrl)
                 
             };}}
 
