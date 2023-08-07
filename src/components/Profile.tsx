@@ -1,4 +1,4 @@
-import React,{useContext,useState} from 'react'
+import React,{ChangeEvent, useContext,useState} from 'react'
 import Image from 'next/image'
 import styles from "@/styles/Profile.module.css"
 import { useForm } from 'react-hook-form';
@@ -27,13 +27,13 @@ const Profile = () => {
         setUserData({ ...userData, email:event.target.value });
     };
 
-        const [selectedFile, setSelectedFile] = useState<File | null>(null);
+        const [File, setFile] = useState<File>();
     
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-            const file = event.target.files && event.target.files[0];
-            setSelectedFile(file);
-            handleFileUpload();
-    };
+        const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+            if (e.target.files) {
+              setFile(e.target.files[0]);
+            }
+          };;
 
     const UploadUrl = async () => {
         const { data: { user } } = await supabase.auth.getUser()
@@ -59,9 +59,9 @@ const Profile = () => {
             const { data: { user } } = await supabase.auth.getUser()
             
             const userId = user?.id
-            if (selectedFile) {
-                const filePath = `/${userId}/${uuidv4()}-${selectedFile.name}`;
-                const { data, error } = await supabase.storage.from('Avatar').upload(filePath,selectedFile);
+            if (File) {
+                const filePath = `/${userId}/${uuidv4()}-${File.name}`;
+                const { data, error } = await supabase.storage.from('Avatar').upload(filePath,File);
                 if (error) {
                     console.error('Error uploading avatar:', error.message);
                 } else {
