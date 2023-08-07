@@ -142,7 +142,7 @@ const Login =  () => {
                     <div  className={styles.LoginInputWrapper}>
                         <Image className={styles.LoginImageInput} src='/assets/images/icon-email.svg' alt='icon-email' height={16} width={16} />
                         <input  style={errors.email ? { border: '#EC5757 1px solid' } : {}}   {...register('email')} className={styles.LoginInput} type="text" placeholder='e.g. alex@email.com' />
-                        {errors.email && <p className={styles.LoginError}>{errors.email?.message}</p>}
+                        {errors && errors.email && <p className={styles.LoginError}>{errors.email.message?.toString()}</p>}
                     </div>
                     
                     <label style={errors.password ? { color: '#EC5757' } : {}}  className={styles.LoginLabel} htmlFor="">
@@ -152,7 +152,7 @@ const Login =  () => {
                     <div className={styles.LoginInputWrapper}>
                         <Image  className={styles.LoginImageInput} src='/assets/images/icon-password.svg' alt='icon-password' height={16} width={16} />
                         <input   style={errors.password ? { border: '#EC5757 1px solid' } : {}}    {...register('password')} className={styles.LoginInput}  placeholder='Enter your password' type = "password" />
-                        {(errors.password && <p className={styles.LoginError}>{errors.password?.message}</p>) || (error && error.message && <p className={styles.LoginError}>Invalid password</p>) }
+                        {(errors && errors.password && <p className={styles.LoginError}>{errors.password.message?.toString()}</p>) || (error && error.message && <p className={styles.LoginError}>Invalid password</p>) }
                     </div>
                     <button type='submit' className={styles.LoginButton}>Login</button>
                     <div className={styles.LoginDiv}>
