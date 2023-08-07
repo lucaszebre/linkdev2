@@ -3,13 +3,14 @@ import styles from '@/styles/Preview.module.css'
 import IllustrationLink from './IllustrationLink'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Avatar, Button } from '@mui/material'
+import { Alert, Avatar, Button, Snackbar } from '@mui/material'
 import { AuthContext } from '@/context';
 import supabase from '../../supabase'
 import { User } from '@supabase/supabase-js'
 const Preview = () => {
     const { userData,LinkArray}  = useContext(AuthContext);
     const [user,setUser]= useState<User|null>()
+    const [open, setOpen] = React.useState(false);
     async function IsUserConnected(){
         try{
             const { data: { user } } = await supabase.auth.getUser()
@@ -22,12 +23,40 @@ const Preview = () => {
     useEffect(()=>{
         IsUserConnected()
     },[])
+
+    const handleClick = () => {
+        copy()
+        setOpen(true);
+      };
+    const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+      };
+
+      const copy = async () => {
+        await navigator.clipboard.writeText(`shareable-page/${userData.user_id}`);
+      }
+
     return (
+        <>
+        <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="Link Copied to the clipboard"
+      >
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+      The link is copied!
+    </Alert> 
+    </Snackbar>
         <div className={styles.Preview}>
             <div className={styles.PreviewBackground}></div>
             <div className={styles.PreviewTop}>
                 {user && <Link href={'/customize'}><Button variant='outlined' className={styles.BackEditor}>Back to Editor</Button></Link>}
-                <Button variant='contained' className={styles.ShareLink}>Share Link</Button>
+                <Button onClick={handleClick} variant='contained' className={styles.ShareLink}>Share Link</Button>
             </div>
             <div className={styles.PreviewCenter}>
             <Avatar src={userData.avatar_url} sx={{
@@ -49,6 +78,7 @@ const Preview = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 
