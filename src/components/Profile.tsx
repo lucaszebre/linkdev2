@@ -16,7 +16,7 @@ const schema = z.object({
 const Profile = () => {
     const { setUserData,userData,setChange } = useContext(AuthContext);
     const [Url,setUrl] = useState('');
-    const {register,handleSubmit,formState: { errors },} = useForm({resolver: zodResolver(schema),});
+    const {register,formState: { errors },} = useForm({resolver: zodResolver(schema),});
     const handleChangeName = (event: { target: { value: any; }; }) => {
         // Assuming you want to set the 'name' property of 'userData' based on the input value
         setUserData({ ...userData, name:event.target.value });
