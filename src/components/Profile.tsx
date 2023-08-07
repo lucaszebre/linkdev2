@@ -50,7 +50,7 @@ const Profile = () => {
                     }
                 
         }catch(error){
-
+            console.error(error)
         }}
         
     
@@ -73,6 +73,14 @@ const Profile = () => {
                 setUrl(avatarUrl)
                 
             };}}
+
+            const onSubmit = (data: any) => {
+                // Call the UploadUrl function here
+                UploadUrl();
+                setChange(prevChange=>!prevChange)
+                // Add any other form submission logic here
+                
+              };
 
     return (
         <div className={styles.Profile}>
@@ -98,8 +106,7 @@ const Profile = () => {
                 </div>
             </div>
 
-            <form className={styles.Form} onSubmit={handleSubmit(() =>{ 
-            UploadUrl(); setChange(prevChange=>!prevChange)})} action="">
+            <form className={styles.Form} onSubmit={handleSubmit(onSubmit)} action="">
                 <div className={styles.ProfileForm}>
                     <div className={styles.ProfileFormRow}>
                         <label className={styles.ProfileLabel} htmlFor="">
