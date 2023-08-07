@@ -97,7 +97,8 @@ const Profile = () => {
                 </div>
             </div>
 
-            <form className={styles.Form} onSubmit={handleSubmit(() => setChange(prevChange=>!prevChange))} action="">
+            <form className={styles.Form} onSubmit={handleSubmit(() =>{ setChange(prevChange=>!prevChange)
+            UploadUrl()})} action="">
                 <div className={styles.ProfileForm}>
                     <div className={styles.ProfileFormRow}>
                         <label className={styles.ProfileLabel} htmlFor="">
@@ -119,7 +120,7 @@ const Profile = () => {
                     </div>
                 </div>
             <div className={styles.ProfileBottom}>
-                <Button type='submit' onClick={()=>{UploadUrl()}} variant='contained' className={styles.ProfileButtonSave}>Save</Button>
+                <Button type='submit'  variant='contained' className={styles.ProfileButtonSave}>Save</Button>
             </div>
             </form>
         </div>
