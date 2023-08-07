@@ -37,7 +37,19 @@ const Profile = () => {
 
     
         
-    
+        const getUrl = async (path:string) => {
+            try{
+                
+            const { data } = supabase
+            .storage
+            .from('Avatar')
+            .getPublicUrl('path')
+            console.log(data.publicUrl)
+            return data.publicUrl
+            }catch(error){
+                console.error('can not get the url ')
+            }
+        }
 
         const handleFileUpload = async () => {
             const { data: { user } } = await supabase.auth.getUser()
@@ -50,16 +62,19 @@ const Profile = () => {
                     console.error('Error uploading avatar:', error.message);
                 } else {
                 try{
-                    console.log(data.path.toString())
-                    const { data: updatedUserData, error: updateError } = await supabase
+                    const url = await getUrl(filePath)
+                    if(url){
+                        const { data: updatedUserData, error: updateError } = await supabase
                     .from('User')
-                    .update({ avatar_url: data.path.toString() })
+                    .update({ avatar_url: url })
                     .eq('user_id', userId);
                     if(updateError){
                         console.error(updateError.message)
                     }else{
                         console.log(updatedUserData)
                     }
+                    }
+                    
                 }catch(error){
                     console.error('Error updating the link')
                 }
