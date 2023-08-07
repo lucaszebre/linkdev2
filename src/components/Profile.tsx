@@ -54,8 +54,13 @@ const Profile = () => {
                     .from('User')
                     .update({ avatar_url: data.path.toString() })
                     .eq('user_id', userId);
+                    if(updateError){
+                        console.error(updateError.message)
+                    }else{
+                        console.log(updatedUserData)
+                    }
                 }catch(error){
-
+                    console.error('Error updating the  Image url')
                 }
                 
             };}}
