@@ -74,11 +74,12 @@ const Profile = () => {
                 
             };}}
 
-            const onSubmit = () => {
+            const UpdateData = () => {
                 // Call the UploadUrl function here
                 UploadUrl();
-                setChange(prevChange=>!prevChange)
-                // Add any other form submission logic here
+                setChange((prevChange) => !prevChange);
+                console.log(userData);
+                
                 
               };
 
@@ -128,7 +129,7 @@ const Profile = () => {
                     </div>
                 </div>
             <div className={styles.ProfileBottom}>
-                <Button onClick={()=> onSubmit()} type='submit'  variant='contained' className={styles.ProfileButtonSave}>Save</Button>
+                <Button onClick={()=> UpdateData()} type='submit'  variant='contained' className={styles.ProfileButtonSave}>Save</Button>
             </div>
             </form>
         </div>
