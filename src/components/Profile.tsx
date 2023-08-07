@@ -74,7 +74,7 @@ const Profile = () => {
                 
             };}}
 
-            const onSubmit = (data: any) => {
+            const onSubmit = () => {
                 // Call the UploadUrl function here
                 UploadUrl();
                 setChange(prevChange=>!prevChange)
@@ -106,7 +106,7 @@ const Profile = () => {
                 </div>
             </div>
 
-            <form className={styles.Form} onSubmit={handleSubmit(onSubmit)} action="">
+            <form className={styles.Form}  action="">
                 <div className={styles.ProfileForm}>
                     <div className={styles.ProfileFormRow}>
                         <label className={styles.ProfileLabel} htmlFor="">
@@ -128,7 +128,7 @@ const Profile = () => {
                     </div>
                 </div>
             <div className={styles.ProfileBottom}>
-                <Button type='submit'  variant='contained' className={styles.ProfileButtonSave}>Save</Button>
+                <Button onClick={()=> onSubmit()} type='submit'  variant='contained' className={styles.ProfileButtonSave}>Save</Button>
             </div>
             </form>
         </div>
