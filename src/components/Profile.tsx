@@ -105,7 +105,7 @@ const Profile = () => {
                         </label>
                         <div  className={styles.LoginInputWrapper}>
                         <input  value={userData.name} style={errors.firstname ? { border: '#EC5757 1px solid' } : {}}  {...register('firstname')} className={styles.ProfileInput} onChange={handleChangeName} placeholder='e.g.John' type="text" />
-                        {errors.firstname && <p className={styles.LoginError}>{errors.firstname?.message}</p>}
+                        {errors.firstname && <p className={styles.LoginError}>{errors.firstname?.message?.toString()}</p>}
                         </div>
                     </div>
                     <div className={styles.ProfileFormRow}>
@@ -114,7 +114,7 @@ const Profile = () => {
                         </label>
                         <div  className={styles.LoginInputWrapper}>
                         <input value={userData.email} style={errors.email ? { border: '#EC5757 1px solid' } : {}}  {...register('email')} className={styles.ProfileInput} placeholder='e.g.email@example.com' onChange={handleChangeMail} type="text" />
-                        {errors.email && <p className={styles.LoginError}>{errors.email?.message}</p>}
+                        {errors.email && <p className={styles.LoginError}>{errors.email?.message?.toString()}</p>}
                         </div>
                     </div>
                 </div>
