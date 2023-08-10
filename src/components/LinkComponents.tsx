@@ -4,7 +4,6 @@ import { Button } from '@mui/material'
 import { AuthContext } from '@/context';
 import Empty from './Empty'
 import LinkT from './Link'
-import { Link } from '@/types/ContextType';
 const LinkComponents = () => {
     const { LinkArray,setLinkArray,setUserData,setChange,userData,change } = useContext(AuthContext);
     const addNewLink = () => {

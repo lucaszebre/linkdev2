@@ -12,7 +12,6 @@ const Schema = z.object({
 
 const ForgetPassword = () => {
     const {register,handleSubmit,watch,formState: { errors },} = useForm({resolver: zodResolver(Schema),});
-    const [email,setEmail]= useState("")
     const watched=watch()
 
     const handleForgetPassword = async (email:string) => {
@@ -33,6 +32,7 @@ const ForgetPassword = () => {
         <div className={styles.ForgetContainer}>
         <form className={styles.ForgetForm} 
         onSubmit={handleSubmit(()=>{
+            handleForgetPassword(watched.email)
         })}
         >
             <h1 className={styles.ForgetH1}>Forget Password</h1>
