@@ -9,17 +9,9 @@ import Router from 'next/router';
 import Link from 'next/link';
 import { AuthContext } from '@/context';
 import CustomSVG from './CustomSvg';
+import { Logout } from '@/utils/logout';
 const Navbar = () => {
     const { setNavButton,Navbutton}  = useContext(AuthContext);
-    const Logout =async () => {
-        try{
-            const { error } = await supabase.auth.signOut()
-            Router.push('/login')
-        }catch(error){
-            console.log(error)
-        }
-        
-    }
     return (
         <div className={styles.NavbarWrapper}>
             <header className={styles.Navbar}>
