@@ -7,6 +7,7 @@ import { Alert, Avatar, Button, Snackbar } from '@mui/material'
 import { AuthContext } from '@/context';
 import supabase from '../../supabase'
 import { User } from '@supabase/supabase-js'
+import { copy } from '@/utils/copy'
 const Preview = () => {
     const { userData,LinkArray}  = useContext(AuthContext);
     const [user,setUser]= useState<User|null>()
@@ -25,7 +26,7 @@ const Preview = () => {
     },[])
 
     const handleClick = () => {
-        copy()
+        copy(userData.user_id)
         setOpen(true);
       };
     const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
@@ -36,9 +37,6 @@ const Preview = () => {
         setOpen(false);
       };
 
-      const copy = async () => {
-        await navigator.clipboard.writeText(`https://linkdev2.vercel.app/shareable-page/${userData.user_id}`);
-      }
 
     return (
         <>
