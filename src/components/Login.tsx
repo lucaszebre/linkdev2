@@ -105,9 +105,7 @@ const Login =  () => {
                         </Link>
                     </div>
                     <div>
-                    <Link href={'/ForgetPassword'} className={styles.LoginNoAccount}>
-                        Forget your password?
-                    </Link>
+                    
                     </div>
                     
                 </form>
