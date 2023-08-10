@@ -14,7 +14,7 @@ const Register: React.FC = () => {
     const Router = useRouter()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [sucess,setSucess]=useState<boolean>(true)
+    const [sucess,setSucess]=useState<boolean>(false)
     const { register, handleSubmit,watch, formState: { errors } } = useForm<FormDataRegister>({ resolver: zodResolver(schemaRegister) });
     const handleRegistration = async (data: FormDataRegister) => {
         const watched=watch()
