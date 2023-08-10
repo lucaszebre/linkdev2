@@ -38,3 +38,9 @@ export const schemaRegister = z.object({
   password1: z.string().min(1, { message: 'Required' }),
   password2: z.string().min(1, { message: 'Required' }),
 });
+
+export const schemaProfile = z.object({
+  firstname: z.string().min(1, { message: 'cant be empty' }),
+  lastname: z.string().min(1, { message: 'cant be empty' }),
+  email: z.string().email({ message: 'Invalid email format' }),
+  });

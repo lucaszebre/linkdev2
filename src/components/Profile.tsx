@@ -8,15 +8,12 @@ import { AuthContext } from '@/context';
 import { Button } from '@mui/material';
 import supabase from '../../supabase';
 import { v4 as uuidv4 } from 'uuid'; // Import the uuidv4 function to generate unique identifiers
-const schema = z.object({
-    firstname: z.string().min(1, { message: 'cant be empty' }),
-    lastname: z.string().min(1, { message: 'cant be empty' }),
-    email: z.string().email({ message: 'Invalid email format' }),
-    });
+import { schemaProfile } from '@/types/ContextType';
+import { getUrl } from '@/utils/geturl';
 const Profile = () => {
     const { setUserData,userData,setChange } = useContext(AuthContext);
     const [Url,setUrl] = useState('');
-    const {register,handleSubmit,formState: { errors },} = useForm({resolver: zodResolver(schema),});
+    const {register,handleSubmit,formState: { errors },} = useForm({resolver: zodResolver(schemaProfile),});
     const handleChangeName = (event: { target: { value: any; }; }) => {
         // Assuming you want to set the 'name' property of 'userData' based on the input value
         setUserData({ ...userData, name:event.target.value });
@@ -34,20 +31,6 @@ const Profile = () => {
               setFile(e.target.files[0]);
             }
           };;
-
-    
-        
-        const getUrl = async (path:string) => {
-            try{
-            const { data } = supabase
-            .storage
-            .from('Avatar')
-            .getPublicUrl(path)
-            return data.publicUrl
-            }catch(error){
-                console.error('can not get the url ')
-            }
-        }
 
         const handleFileUpload = async () => {
             const { data: { user } } = await supabase.auth.getUser()
@@ -145,7 +128,5 @@ const Profile = () => {
 }
 
 export default Profile
-function setImageUrl(arg0: string) {
-    throw new Error('Function not implemented.');
-}
+
 
