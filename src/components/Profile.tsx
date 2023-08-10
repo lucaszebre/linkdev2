@@ -9,7 +9,7 @@ import { Button } from '@mui/material';
 import supabase from '../../supabase';
 import { v4 as uuidv4 } from 'uuid'; // Import the uuidv4 function to generate unique identifiers
 import { schemaProfile } from '@/types/ContextType';
-import { getUrl } from '@/utils/geturl';
+import { getUrl } from '@/utils/getUrl';
 const Profile = () => {
     const { setUserData,userData,setChange } = useContext(AuthContext);
     const [Url,setUrl] = useState('');
