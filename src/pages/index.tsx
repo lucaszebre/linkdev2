@@ -1,7 +1,5 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
-import ForgetPassword from '@/components/ForgetPassword'
-import ThankYouForRegister from '@/components/ThankYouForRegister'
 import Customize from '@/components/Customize'
 export default function Home() {
   return (
