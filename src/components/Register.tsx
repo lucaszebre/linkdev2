@@ -6,9 +6,25 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import z from 'zod';
 import supabase from '../../supabase';
-import { FormDataRegister,schemaRegister } from '@/types/ContextType';
+import { FormDataRegister } from '@/types/ContextType';
 import ThankYouForRegister from './ThankYouForRegister';
+
+const schemaRegister = z.object({
+    email: z.string().email({ message: 'Invalid email format' }),
+    password1: z.string()
+        .min(8, { message: 'Password must be at least 8 characters long' })
+        .regex(/[A-Za-z]/, { message: 'Password must contain at least one letter' })
+        .regex(/[0-9]/, { message: 'Password must contain at least one digit' })
+        .regex(/[!@#$%^&*(),.?":{}|<>]/, { message: 'Password must contain at least one special character' }),
+    password2: z.string()
+        .min(8, { message: 'Password must be at least 8 characters long' })
+        .regex(/[A-Za-z]/, { message: 'Password must contain at least one letter' })
+        .regex(/[0-9]/, { message: 'Password must contain at least one digit' })
+        .regex(/[!@#$%^&*(),.?":{}|<>]/, { message: 'Password must contain at least one special character' })
+        ,
+});
 
 const Register: React.FC = () => {
     const Router = useRouter()
@@ -16,6 +32,8 @@ const Register: React.FC = () => {
     const [password, setPassword] = useState('')
     const [sucess,setSucess]=useState<boolean>(false)
     const { register, handleSubmit,watch, formState: { errors } } = useForm<FormDataRegister>({ resolver: zodResolver(schemaRegister) });
+
+    
     const handleRegistration = async (data: FormDataRegister) => {
         const watched=watch()
                     setEmail(watched.email)
