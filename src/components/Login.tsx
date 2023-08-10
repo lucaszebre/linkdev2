@@ -12,67 +12,16 @@ import * as z from 'zod';
 import Link from 'next/link';
 import supabase from "../../supabase";
 import Router from "next/router";
-
-const Schema = z.object({
-    email: z.string().email({ message: 'Invalid email format' }),
-    password: z.string().min(8, { message: ' at least 8 characters long' })
-    .regex(/[A-Za-z]/, { message: ' must contain at least one letter' })
-    .regex(/[0-9]/, { message: ' must contain at least one digit' })
-    .regex(/[!@#$%^&*(),.?":{}|<>]/, { message: '  at least one special character' }),
-});
+import { handleLoginWithGoogle,handleLoginWithGithub } from "@/utils/handle";
+import { SchemaLogin } from "@/types/ContextType";
 
 
 const Login =  () => {
-    const {register,handleSubmit,watch,formState: { errors },} = useForm({resolver: zodResolver(Schema),});
+    const {register,handleSubmit,watch,formState: { errors },} = useForm({resolver: zodResolver(SchemaLogin),});
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error,setError]= useState<AuthError>()
 
-    const handleLoginWithGoogle = async () => {
-        try {
-            const { data, error } = await supabase.auth.signInWithOAuth({
-                provider: 'google',
-                options: {
-                    queryParams: {
-                        access_type: 'offline',
-                        prompt: 'consent',
-                    },
-                    },
-                })
-        
-            if (error) {
-                console.error('Error signing in with Google:', error.message);
-            } else {
-                // Update state with the user data
-                console.log('Logged in user:', data);
-                Router.push('/');
-            }
-            } catch (err) {
-            console.error('Error signing in with Google:');
-        };}
-        const handleLoginWithGithub = async () => {
-        try {
-            const { data, error } = await supabase.auth.signInWithOAuth({
-                provider: 'github',
-                options: {
-                    queryParams: {
-                        access_type: 'offline',
-                        prompt: 'consent',
-                    },
-                    },
-                })
-        
-            if (error) {
-                console.error('Error signing in with Github:', error.message);
-            } else {
-                // Update state with the user data
-                console.log('Logged in user:', data);
-            }
-            } catch (err) {
-            console.error('Error signing in with Github:');
-            }
-        };
-        
         async function signInWithEmail() {
             try{
                 const { data, error } = await supabase.auth.signInWithPassword({
@@ -89,14 +38,8 @@ const Login =  () => {
                 }
             }catch(err){
                 console.error("Error login")
-            }
+            }}
             
-            
-            }
-            
-    
-        
-    
         
     return (
         <>

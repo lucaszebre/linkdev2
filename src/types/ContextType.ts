@@ -1,3 +1,5 @@
+import z from 'zod'
+
 export interface Link {
     platform: string;
     link: string|null;
@@ -16,3 +18,11 @@ export interface UserData {
   name: string;
   user_id: string;
 }
+
+export const SchemaLogin = z.object({
+  email: z.string().email({ message: 'Invalid email format' }),
+  password: z.string().min(8, { message: ' at least 8 characters long' })
+  .regex(/[A-Za-z]/, { message: ' must contain at least one letter' })
+  .regex(/[0-9]/, { message: ' must contain at least one digit' })
+  .regex(/[!@#$%^&*(),.?":{}|<>]/, { message: '  at least one special character' }),
+});
