@@ -8,27 +8,15 @@ import * as z from 'zod';
 import Link from 'next/link';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { useRouter } from 'next/navigation';
-
-interface FormData {
-    email: string;
-    password1: string;
-    password2: string;
-}
-
-const supabase: SupabaseClient = createClient('https://rrqmpgpvlhaxsozwlntq.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJycW1wZ3B2bGhheHNvendsbnRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODk3MjU4NjIsImV4cCI6MjAwNTMwMTg2Mn0.OEAZdA5aUxMgV8xTuV8a8rFlzGpP_S2EcRAqp7Pa5_0');
-
-const schema = z.object({
-    email: z.string().min(1, { message: 'Required' }),
-    password1: z.string().min(1, { message: 'Required' }),
-    password2: z.string().min(1, { message: 'Required' }),
-});
+import supabase from '../../supabase';
+import { FormDataRegister,schemaRegister } from '@/types/ContextType';
 
 const Register: React.FC = () => {
     const Router = useRouter()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const { register, handleSubmit,watch, formState: { errors } } = useForm<FormData>({ resolver: zodResolver(schema) });
-    const handleRegistration = async (data: FormData) => {
+    const { register, handleSubmit,watch, formState: { errors } } = useForm<FormDataRegister>({ resolver: zodResolver(schemaRegister) });
+    const handleRegistration = async (data: FormDataRegister) => {
         const watched=watch()
                     setEmail(watched.email)
                     setPassword(watched.password1)

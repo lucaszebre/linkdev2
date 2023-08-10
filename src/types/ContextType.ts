@@ -26,3 +26,15 @@ export const SchemaLogin = z.object({
   .regex(/[0-9]/, { message: ' must contain at least one digit' })
   .regex(/[!@#$%^&*(),.?":{}|<>]/, { message: '  at least one special character' }),
 });
+
+export interface FormDataRegister {
+  email: string;
+  password1: string;
+  password2: string;
+}
+
+export const schemaRegister = z.object({
+  email: z.string().min(1, { message: 'Required' }),
+  password1: z.string().min(1, { message: 'Required' }),
+  password2: z.string().min(1, { message: 'Required' }),
+});
