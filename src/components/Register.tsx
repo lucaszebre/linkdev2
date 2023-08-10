@@ -4,9 +4,7 @@ import Image from 'next/image'
 import styles from '@/styles/Register.module.css'
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import Link from 'next/link';
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { useRouter } from 'next/navigation';
 import supabase from '../../supabase';
 import { FormDataRegister,schemaRegister } from '@/types/ContextType';
