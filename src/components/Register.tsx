@@ -10,11 +10,13 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { useRouter } from 'next/navigation';
 import supabase from '../../supabase';
 import { FormDataRegister,schemaRegister } from '@/types/ContextType';
+import ThankYouForRegister from './ThankYouForRegister';
 
 const Register: React.FC = () => {
     const Router = useRouter()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [sucess,setSucess]=useState<boolean>(false)
     const { register, handleSubmit,watch, formState: { errors } } = useForm<FormDataRegister>({ resolver: zodResolver(schemaRegister) });
     const handleRegistration = async (data: FormDataRegister) => {
         const watched=watch()
@@ -28,11 +30,15 @@ const Register: React.FC = () => {
 
         if (error) {
             console.error('Registration error:', error);
+            setSucess(false)
             // Handle registration error (e.g., display an error message)
         } else {
             console.log('Registration successful:', data.user);
             // Redirect or show a success message to the user
-            Router.push('/preview'); // Replace 'success-page' with the URL of the page you want to redirect to
+            setSucess(true)
+            setTimeout(()=>{
+                Router.push('/'); // Replace 'success-page' with the URL of the page you want to redirect to
+            },300)
         }
         } catch (error) {
         console.error('Registration error:', error);
@@ -40,7 +46,14 @@ const Register: React.FC = () => {
         }
 
     };
+
+    if(sucess){
+        return (
+            <ThankYouForRegister />
+        )
+    }
     return (
+        
         <div className={styles.RegisterContainer}>
             <div className={styles.RegisterWrapper}>
                 <div className={styles.RegisterImageWrapper}>
