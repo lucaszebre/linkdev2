@@ -81,7 +81,7 @@ const Register: React.FC = () => {
                 <div className={styles.RegisterInputWrapper}>
                     <Image  className={styles.RegisterImageInput} src='/assets/images/icon-password.svg' alt='icon-password' height={16} width={16} />
                     <input type='password' style={errors.password1 ? { border: '#EC5757 1px solid' } : {}}    {...register('password1')} className={styles.RegisterInput}  placeholder='At least 8 characters' />
-                    {errors.password1 && <p className={styles.RegisterError}>Can't be empty</p>}
+                    {errors.password1 && <p className={styles.RegisterError}>{errors.password1.message?.toString()}</p>}
                 </div>
                 <label className={styles.RegisterLabel} htmlFor="">
                     Confirm password
@@ -90,7 +90,7 @@ const Register: React.FC = () => {
                 <div className={styles.RegisterInputWrapper}>
                     <Image  className={styles.RegisterImageInput} src='/assets/images/icon-password.svg' alt='icon-password' height={16} width={16} />
                     <input type='password' style={errors.password2 ? { border: '#EC5757 1px solid' } : {}}    {...register('password2')} className={styles.RegisterInput}  placeholder='At least 8 characters' />
-                    {errors.password2 && <p className={styles.RegisterError}>Can't be empty</p>}
+                    {errors.password2 && <p className={styles.RegisterError}>{errors.password2.message?.toString()}</p>}
                 </div>
                 <p className={styles.RegisterP}>
                 Password must contain at least 8 characters

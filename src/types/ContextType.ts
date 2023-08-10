@@ -35,8 +35,14 @@ export interface FormDataRegister {
 
 export const schemaRegister = z.object({
   email: z.string().min(1, { message: 'Required' }),
-  password1: z.string().min(1, { message: 'Required' }),
-  password2: z.string().min(1, { message: 'Required' }),
+  password1: z.string().min(8, { message: ' at least 8 characters long' })
+  .regex(/[A-Za-z]/, { message: ' must contain at least one letter' })
+  .regex(/[0-9]/, { message: ' must contain at least one digit' })
+  .regex(/[!@#$%^&*(),.?":{}|<>]/, { message: '  at least one special character' }),
+  password2: z.string().min(8, { message: ' at least 8 characters long' })
+  .regex(/[A-Za-z]/, { message: ' must contain at least one letter' })
+  .regex(/[0-9]/, { message: ' must contain at least one digit' })
+  .regex(/[!@#$%^&*(),.?":{}|<>]/, { message: '  at least one special character' }),
 });
 
 export const schemaProfile = z.object({
