@@ -67,13 +67,13 @@ const Login =  () => {
                         startIcon={<GoogleIcon />}
                         onClick={handleLoginWithGoogle} 
                             >
-                        Sign in with Google
+                        Login with Google
                         </Button>
                         <Button
                         startIcon={<GitHubIcon/>}
                         variant="outlined"
                         onClick={handleLoginWithGithub} >
-                            Sign in with Github 
+                            Login with Github 
                         </Button>
                     </div>
                     <p className={styles.LoginDescription}>
