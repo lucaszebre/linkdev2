@@ -34,7 +34,7 @@ export interface FormDataRegister {
 }
 
 export const schemaRegister = z.object({
-  email: z.string().min(1, { message: 'Required' }),
+  email: z.string().email({ message: 'Invalid email format' }),
   password1: z.string().min(8, { message: ' at least 8 characters long' })
   .regex(/[A-Za-z]/, { message: ' must contain at least one letter' })
   .regex(/[0-9]/, { message: ' must contain at least one digit' })

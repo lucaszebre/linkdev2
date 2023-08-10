@@ -72,7 +72,7 @@ const Register: React.FC = () => {
                 <div className={styles.RegisterInputWrapper}>
                     <Image className={styles.RegisterImageInput} src='/assets/images/icon-email.svg' alt='icon-email' height={16} width={16} />
                     <input style={errors.email ? { border: '#EC5757 1px solid' } : {}}   {...register('email')}  className={styles.RegisterInput} type="text" placeholder='e.g. alex@email.com' />
-                    {errors.email && <p className={styles.RegisterError}>Can't be empty</p>}
+                    {errors.email && <p className={styles.RegisterError}>{errors.email.message?.toString()}</p>}
                 </div>
                 <label className={styles.RegisterLabel} htmlFor="">
                     Create password
