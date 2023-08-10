@@ -84,7 +84,7 @@ const Login =  () => {
                     </label>
                     <div  className={styles.LoginInputWrapper}>
                         <Image className={styles.LoginImageInput} src='/assets/images/icon-email.svg' alt='icon-email' height={16} width={16} />
-                        <input  style={errors.email ? { border: '#EC5757 1px solid' } : {}}   {...register('email')} className={styles.LoginInput} type="text" placeholder='e.g. alex@email.com' />
+                        <input  style={errors.email ? { border: '#EC5757 1px solid' } : {}}   {...register('email')} className={styles.LoginInput} type="text" placeholder='e.g. lucasbeaugosse@email.com' />
                         {errors && errors.email && <p className={styles.LoginError}>{errors.email.message?.toString()}</p>}
                     </div>
                     
