@@ -1,11 +1,10 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '@/styles/ShareablePage.module.css';
 import IllustrationLink from '@/components/IllustrationLink';
 import { Avatar } from '@mui/material';
 import supabase from '../../../../supabase';
 import { UserData } from '@/types/ContextType';
-
 export interface LinkType {
   platform: string;
   link: string | null;
