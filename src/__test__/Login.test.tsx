@@ -1,6 +1,9 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent} from '@testing-library/react';
 import Login from '@/components/Login';
 import React from 'react'; // Make sure to import React
+import { Router } from 'next/router';
+import "@testing-library/jest-dom";
+import userEvent from '@testing-library/user-event';
 
 // Mocking the Supabase client
 jest.mock('../../supabase', () => ({
@@ -33,7 +36,14 @@ describe('Login Component', () => {
     expect(githubButton).toBeInTheDocument;
   });
 
+  it('renders without errors', () => {
+    const component = render(<Login />);
+    expect(component).toBeTruthy();
+  });
+
+  
+  
+})
   
 
   // Add more tests for other functionalities and edge cases
-});

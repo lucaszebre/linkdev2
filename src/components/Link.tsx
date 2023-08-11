@@ -87,7 +87,7 @@ const Link = (props:{
                 </label>
                 <Select
                 labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                id="simple-select"
                 value={Platform}
                 label="Platform"
                 onChange={handleChange}

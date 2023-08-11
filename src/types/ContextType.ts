@@ -21,7 +21,7 @@ export interface UserData {
 
 export const SchemaLogin = z.object({
   email: z.string().email({ message: 'Invalid email format' }),
-  password: z.string().min(8, { message: ' at least 8 characters long' })
+  password: z.string().min(8, { message: 'at least 8 characters long' })
   .regex(/[A-Za-z]/, { message: ' must contain at least one letter' })
   .regex(/[0-9]/, { message: ' must contain at least one digit' })
   .regex(/[!@#$%^&*(),.?":{}|<>]/, { message: '  at least one special character' }),
