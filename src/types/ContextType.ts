@@ -1,6 +1,6 @@
 import z from 'zod'
 
-export interface Link {
+export interface LinkType {
     platform: string;
     link: string|null;
   }
@@ -14,7 +14,7 @@ export interface UserData {
   avatar_url: string;
   created_at: string;
   email: string;
-  links: Link[];
+  links: LinkType[];
   name: string;
   user_id: string;
 }

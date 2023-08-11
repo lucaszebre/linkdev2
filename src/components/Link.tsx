@@ -9,14 +9,14 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import CustomSVG from './CustomSvg';
 import { AuthContext } from '@/context';
 import { MenuItem, Select, SelectChangeEvent,Button } from '@mui/material'
-import { Link } from '@/types/ContextType';
+import { LinkType } from '@/types/ContextType';
 import { filterLinksWithValue } from '@/utils/FilterLink';
 
 const Link = (props:{
     number:number,
     platform:string,
     link:string|null,
-    remove:Dispatch<SetStateAction<Link[]>>
+    remove:Dispatch<SetStateAction<LinkType[]>>
 }) => {
     const [Platform, setPlatform] = React.useState(props.platform);
     const [Input,setInput] = useState(props.link)
