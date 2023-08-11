@@ -2,15 +2,15 @@ import React, { createContext, useEffect, useState } from 'react';
 import  supabase  from '../../supabase'; // Import your Supabase client here
 import Router from 'next/router';
 import { User,UserAppMetadata,UserMetadata} from '@supabase/supabase-js';
-import {Link,UserData} from '@/types/ContextType'
+import {LinkType,UserData} from '@/types/ContextType'
 import { createLinkArray } from '@/utils/CreateLinkArray';
 export type AuthContext = { // Type for context
     userData:any
     setUserData:React.Dispatch<React.SetStateAction<any[]>>
     Navbutton: string; // Delete block state
     setNavButton: React.Dispatch<React.SetStateAction<string>>;
-    LinkArray:Link[],
-    setLinkArray:React.Dispatch<React.SetStateAction<Link[]>>;
+    LinkArray:LinkType[],
+    setLinkArray:React.Dispatch<React.SetStateAction<LinkType[]>>;
     change:boolean,
     setChange:React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -34,7 +34,7 @@ export const AuthContextProvider = (props: { children: React.ReactNode })=> {
     const [change,setChange] = useState(false)
     const [userData,setUserData] = useState<any[]>([])
     const [Navbutton,setNavButton] = useState('Links')
-    const [LinkArray,setLinkArray] = useState<Link[]>([])
+    const [LinkArray,setLinkArray] = useState<LinkType[]>([])
     // Function to fetch the current user from Supabase
 
     const onAuthStateChange = async () =>{
