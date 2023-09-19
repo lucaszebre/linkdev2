@@ -1,38 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Linkedev - A Developer's Link Tree
+
+## Overview
+
+Linkedev is a developer's link tree web application that allows you to create a personalized landing page with links to your various online profiles, projects, and social media accounts. Built with Supabase, Next.js, and React Query, Linkedev offers a seamless and customizable solution for developers to showcase their online presence.
+
+## Table of Contents
+
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Customization](#customization)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- **User Authentication:** Securely log in and manage your link tree.
+- **Link Management:** Add, edit, and delete links to your online profiles.
+- **Customization:** Personalize your link tree's appearance with themes, colors, and backgrounds.
+- **Responsive Design:** Ensure your link tree looks great on various devices, including desktop and mobile.
+- **Analytics:** Track the performance of your links and view visitor statistics.
 
 ## Getting Started
 
-First, run the development server:
+To start using Linkedev, follow these steps:
 
-```bash
+1. **Clone the Repository:** Clone this repository to your local machine:
+
+   ```bash
+   git clone https://github.com/yourusername/linkedev.git
+2. **Set Up Supabase**: Create a Supabase project and configure your environment variables for authentication.
+
+3.**Start the Application**: Start the frontend application:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4.**Access the App**: Open your web browser and access the app at http://localhost:3000.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Usage
+  Once you have Linkedev up and running, you can:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+  Log in with your credentials.
+  Add links to your link tree.
+  Customize the appearance of your link tree.
+  Share your link tree URL with others.
+  Customization
+  Customize your link tree's appearance and functionality:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Themes: Choose from different themes to match your personal style.
+Colors: Select your preferred color scheme.
+Backgrounds: Upload custom backgrounds to enhance your link tree's visual appeal.
+Contributing
+Contributions to Linkedev are welcome! If you'd like to contribute to this project, please follow our Contributing Guidelines.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+License
+This project is licensed under the MIT License - see the LICENSE.md file for details.
 
-## Learn More
+Acknowledgments
+Special thanks to the open-source community for their amazing contributions and libraries.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Inspired by the idea of link trees for developers.
