@@ -1,4 +1,5 @@
 # Linkedev - A Developer's Link Tree
+![App Screenshot](LinkDev.jpg)
 
 ## Overview
 
