@@ -1,62 +1,65 @@
-# Linkedev - A Developer's Link Tree
+# LinkDev - a link tree for developers
+
+Build a single page that gathers your developer profiles (GitHub, LinkedIn, dev.to, Codewars, ...) and share it with one URL.
+
 ![App Screenshot](LinkDev.jpg)
 
-## Overview
+Live demo: https://linkdev2.vercel.app
 
-Linkedev is a developer's link tree web application that allows you to create a personalized landing page with links to your various online profiles, projects, and social media accounts. Built with Supabase, Next.js, and React Query, Linkedev offers a seamless and customizable solution for developers to showcase their online presence.
+## What it does
 
-## Table of Contents
+- Sign up with email + password, or sign in with Google or GitHub (Supabase Auth, OAuth callback via `/api/auth/callback`).
+- Add, edit and remove links for 13 platforms (GitHub, Frontend Mentor, Twitter, YouTube, LinkedIn, Facebook, Twitch, dev.to, Codewars, freeCodeCamp, GitLab, Hashnode, Stack Overflow), each with its brand colour.
+- Edit your profile (display name, public email) and upload an avatar to Supabase Storage.
+- Live phone-style preview while editing, plus a full preview page.
+- Public, shareable page at `/shareable-page/<user_id>` with a one-click "copy link" button.
 
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Customization](#customization)
-- [Contributing](#contributing)
-- [License](#license)
+## Stack
 
-## Features
+- Next.js 13 (pages router), React 18, TypeScript
+- Supabase: `@supabase/supabase-js`, `@supabase/auth-helpers-nextjs`, `@supabase/auth-ui-react`
+- MUI 5 + Emotion, CSS Modules
+- Redux Toolkit, React Hook Form + Zod
+- Jest + Testing Library
 
-- **User Authentication:** Securely log in and manage your link tree.
-- **Link Management:** Add, edit, and delete links to your online profiles.
-- **Customization:** Personalize your link tree's appearance with themes, colors, and backgrounds.
-- **Responsive Design:** Ensure your link tree looks great on various devices, including desktop and mobile.
-- **Analytics:** Track the performance of your links and view visitor statistics.
+## Run locally
 
-## Getting Started
+Requires Node 22+ (tested on Node 24) and npm.
 
-To start using Linkedev, follow these steps:
+```bash
+git clone https://github.com/lucaszebre/linkdev2.git
+cd linkdev2
+npm install
+cp .env.example .env.local   # then fill in the two values below
+npm run dev                  # http://localhost:3000
+```
 
-1. **Clone the Repository:** Clone this repository to your local machine:
+Environment variables (see `.env.example`):
 
-   ```bash
-   git clone https://github.com/yourusername/linkedev.git
-2. **Set Up Supabase**: Create a Supabase project and configure your environment variables for authentication.
+| Name | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anon (public) key |
 
-3.**Start the Application**: Start the frontend application:
-npm run dev
+Both are read at build time, so `npm run build` also needs them.
 
-4.**Access the App**: Open your web browser and access the app at http://localhost:3000.
+### Supabase setup
 
-### Usage
-  Once you have Linkedev up and running, you can:
+The database schema is not in this repo (`supabase/seed.sql` is empty). In your Supabase project you need:
 
-  Log in with your credentials.
-  Add links to your link tree.
-  Customize the appearance of your link tree.
-  Share your link tree URL with others.
-  Customization
-  Customize your link tree's appearance and functionality:
+- a `User` table with at least `user_id` (matches `auth.users.id`), `email`, `firstname`, `avatar_url` and a `links` JSON column;
+- a public Storage bucket named `Avatar`;
+- Google and GitHub OAuth providers enabled if you want social login;
+- your Supabase project hostname in `images.domains` in `next.config.js` (currently set to the original project).
 
-Themes: Choose from different themes to match your personal style.
-Colors: Select your preferred color scheme.
-Backgrounds: Upload custom backgrounds to enhance your link tree's visual appeal.
-Contributing
-Contributions to Linkedev are welcome! If you'd like to contribute to this project, please follow our Contributing Guidelines.
+### Other scripts
 
-License
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+```bash
+npm run build   # production build
+npm start       # serve the production build
+npx jest        # run the tests once (`npm test` starts Jest in watch mode)
+```
 
-Acknowledgments
-Special thanks to the open-source community for their amazing contributions and libraries.
+## Status
 
-Inspired by the idea of link trees for developers.
+Built in 2023 as a learning project; not actively maintained. Dependencies were refreshed in October 2026 (patch/minor bumps only).
