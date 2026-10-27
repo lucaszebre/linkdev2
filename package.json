@@ -13,7 +13,7 @@
     "@babel/preset-typescript": "^7.22.5",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@hookform/resolvers": "^3.1.1",
+    "@hookform/resolvers": "^6.0.1",
     "@mui/icons-material": "^5.14.1",
     "@mui/material": "^5.14.2",
     "@reduxjs/toolkit": "^1.9.5",
@@ -33,7 +33,7 @@
     "ts-jest": "^29.1.1",
     "typescript": "5.9.3",
     "uuid": "^9.0.0",
-    "zod": "^3.21.4"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@babel/core": "^7.22.10",
